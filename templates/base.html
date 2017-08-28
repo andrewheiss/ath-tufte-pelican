@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="{{AUTHOR}}">
+    {% block meta_tags %}{% endblock meta_tags %}
+
+    <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+
+    {% block canonical_rel %}{% endblock %}
+    {% block social_meta %}{% endblock social_meta %}
+
+    <link href="/theme/css/tufte.css" rel="stylesheet">
+    <link href="/theme/css/latex.css" rel="stylesheet">
+
+    {% block extra_head %}{% endblock %}
+
+    <!-- Haddock syntax highlighting -->
+    <style type="text/css">code{white-space: pre;}</style>
+    <style type="text/css">
+        div.sourceCode { overflow-x: auto; }
+        table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+          margin: 0; padding: 0; vertical-align: baseline; border: none; }
+        table.sourceCode { width: 100%; line-height: 100%; }
+        td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+        td.sourceCode { padding-left: 5px; }
+        code > span.kw { color: #0000ff; } /* Keyword */
+        code > span.ch { color: #008080; } /* Char */
+        code > span.st { color: #008080; } /* String */
+        code > span.co { color: #008000; } /* Comment */
+        code > span.ot { color: #ff4000; } /* Other */
+        code > span.al { color: #ff0000; } /* Alert */
+        code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+        code > span.wa { color: #008000; font-weight: bold; } /* Warning */
+        code > span.cn { } /* Constant */
+        code > span.sc { color: #008080; } /* SpecialChar */
+        code > span.vs { color: #008080; } /* VerbatimString */
+        code > span.ss { color: #008080; } /* SpecialString */
+        code > span.im { } /* Import */
+        code > span.va { } /* Variable */
+        code > span.cf { color: #0000ff; } /* ControlFlow */
+        code > span.op { } /* Operator */
+        code > span.bu { } /* BuiltIn */
+        code > span.ex { } /* Extension */
+        code > span.pp { color: #ff4000; } /* Preprocessor */
+        code > span.do { color: #008000; } /* Documentation */
+        code > span.an { color: #008000; } /* Annotation */
+        code > span.cv { color: #008000; } /* CommentVar */
+        code > span.at { } /* Attribute */
+        code > span.in { color: #008000; } /* Information */
+    </style>
+    <style type="text/css">
+        pre:not([class]) {
+            background-color: white;
+        }
+    </style>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<!--     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/theme/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/theme/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/theme/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/theme/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/theme/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/theme/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/theme/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/theme/favicon-16x16.png" sizes="16x16" />
+    <meta name="application-name" content="Scorecard Diplomacy"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="/theme/mstile-144x144.png" /> -->
+
+    <script src="//use.typekit.net/vpe6zfl.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+    </head>
+    <body class="{{page_class}}">
+    <div class="wrap">
+        <header>
+            <nav class="group">
+                <a href="/"><img src="/theme/img/course-icon.png"></a>
+                <h1 class="websitetitle"><a href="{{ SITEURL }}">{{ COURSE_NUMBER }}: {{ SITENAME }}</a></h1>
+            </nav>
+            <nav class="bottom-group">
+                {% for title, link in MENUITEMS %}
+                {% if page %}
+                <a {% if link | get_slug == page.slug %} class="active"{% endif %} href="{{ link }}">{{ title }}</a>
+                {% else %}
+                <a href="{{ link }}">{{ title }}</a>
+                {% endif %}
+                {% endfor %}
+            </nav>
+        </header>
+        {% block content %}
+        {% endblock %}
+        <footer>Footer stuff goes here.</footer>
+        {% block final_script %}{% endblock %}
+    </div>
+    </body>
+</html>
